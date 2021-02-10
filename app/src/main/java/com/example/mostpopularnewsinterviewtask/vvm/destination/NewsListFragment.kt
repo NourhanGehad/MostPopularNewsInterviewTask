@@ -35,7 +35,16 @@ class NewsListFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerview()
 
+        vm.getMostPopularNews()
+        vm.newsListMutableLiveData.observe(activity!!, Observer { recievedNewsList->
+            newsAdapter.changeNewsList(recievedNewsList)
+            Log.d("here","recievedNewsList size"+ recievedNewsList.size)
+        })
+    }
+
+    private fun initRecyclerview(){
         newsAdapter = NewsAdapter(
             observer = object: NewsAdapter.SelectionPropagator{
                 override fun propagateSelection(newsItem: NewsItem) {
@@ -46,15 +55,10 @@ class NewsListFragment : Fragment() {
             }
         )
         val linearLayoutManager = LinearLayoutManager(context)
-        vm.getMostPopularNews()
-        vm.newsListMutableLiveData.observe(activity!!, Observer { recievedNewsList->
-            newsAdapter.changeNewsList(recievedNewsList)
-            Log.d("here","recievedNewsList"+ recievedNewsList.size)
-            f_news_list_news_rv.apply {
-                adapter = newsAdapter
-                layoutManager = linearLayoutManager
-            }
+        f_news_list_news_rv.apply {
+            adapter = newsAdapter
+            layoutManager = linearLayoutManager
+        }
 
-        })
     }
 }

@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit
 
 object Client {
     private var okHttpClient: OkHttpClient? = null
-    private var services: Services? = null
     var retrofitClient = initClient()
 
     private fun initHttpClient(): OkHttpClient {
