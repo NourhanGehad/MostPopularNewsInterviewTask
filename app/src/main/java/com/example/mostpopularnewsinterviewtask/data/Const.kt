@@ -5,6 +5,6 @@ object Const {
     val CONNECT_TIMEOUT = 60L
     val BASE_URL = "https://api.nytimes.com/svc/"
     //TODO: INSERT YOUR OWN API KEY
-    val API_KEY = "YOUR_KEY"
+    val API_KEY = "Kjli5yzCAHj6pbSX0yzGFZMNP9XlJLFQ"
 
 }

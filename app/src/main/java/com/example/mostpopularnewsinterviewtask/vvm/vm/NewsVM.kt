@@ -1,7 +1,6 @@
 package com.example.mostpopularnewsinterviewtask.vvm.vm
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mostpopularnewsinterviewtask.data.Client
@@ -17,7 +16,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-class NewsVM : ViewModel() {
+class NewsVM() : ViewModel() {
     private val services = Client.retrofitClient.create(Services::class.java)
     var newsListMutableLiveData: MutableLiveData<ArrayList<NewsItem>> =
         MutableLiveData<ArrayList<NewsItem>>()
